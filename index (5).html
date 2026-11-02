@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>幾 A 幾 B｜版本一到四</title>
+<style>
+  :root{font-family:system-ui,"Microsoft JhengHei",sans-serif;color:#23443d;background:#f4f2e9;line-height:1.7}
+  *{box-sizing:border-box}
+  body{margin:0;padding:20px 16px 40px}
+  .wrap{max-width:1140px;margin:0 auto}
+  h1{font-size:clamp(22px,4vw,30px);margin:0 0 4px}
+  .sub{margin:0 0 14px;color:#50645b;font-size:14px}
+  nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+  nav button{font:inherit;font-weight:650;padding:10px 16px;border-radius:12px;border:1px solid #a6b9ab;background:#fff;color:#315e4f;cursor:pointer;min-height:44px}
+  nav button[aria-selected=true]{background:#315e4f;border-color:#315e4f;color:#fff}
+  :focus-visible{outline:3px solid #a86731;outline-offset:3px}
+  iframe{width:100%;border:0;display:block;min-height:560px;background:transparent}
+  [hidden]{display:none!important}
+  .quick{margin:0 0 14px;font-size:15px}
+  .quick a,.go{display:inline-block;margin:4px 10px 4px 0;padding:9px 16px;border-radius:10px;background:#315e4f;color:#fff;text-decoration:none;font-weight:650}
+  .cloud{padding:22px;background:#fff;border:1px solid #d1dcd1;border-radius:20px}
+  .cloud h2{margin:0 0 8px;font-size:20px}
+  .cloud p{margin:0 0 10px;font-size:15px}
+  .cloud input{font:inherit;padding:10px 12px;border:1px solid #a3b9ac;border-radius:10px;width:100%;max-width:640px;display:block;margin:6px 0 10px}
+  .cloud button{font:inherit;font-weight:650;padding:11px 18px;border-radius:10px;border:1px solid #315e4f;background:#315e4f;color:#fff;cursor:pointer}
+  .cloud .warn{padding:12px 14px;background:#eeeade;border-radius:10px;font-size:14px;color:#5d5447}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>數位科技概論｜幾 A 幾 B（版本一～四）</h1>
+  <p class="sub">版本一、二直接在這個頁面遊玩；版本三、四是 Google Apps Script 雲端版，貼上 /exec 網址後在新分頁開啟。</p>
+  <p class="quick"><b>雲端版直接開啟：</b>
+    <a href="https://script.google.com/macros/s/AKfycbwkm1ieookKN2skijQOBblQ41yS6bp9pNyLGokCGX6hPXJM_HeArXipO9rRq2tNlYAH/exec" target="_blank" rel="noopener noreferrer">版本三（代號存檔）↗</a>
+    <a href="https://script.google.com/macros/s/AKfycbyEySWEZT7Di9grXMGobUdTFbl-1YP8bM-vXA2JoGFkXfUfcXSGTHNMWuLVQqu9EWdG1Q/exec" target="_blank" rel="noopener noreferrer">版本四（Google 個人存檔）↗</a></p>
+  <nav role="tablist" aria-label="版本切換">
+    <button role="tab" data-v="v1" aria-selected="true">版本一：基本遊戲</button>
+    <button role="tab" data-v="v2" aria-selected="false">版本二：多局歷史</button>
+    <button role="tab" data-v="v3" aria-selected="false">版本三：代號雲端存檔 ↗</button>
+    <button role="tab" data-v="v4" aria-selected="false">版本四：Google 個人存檔 ↗</button>
+  </nav>
+  <iframe id="f-v1" title="幾A幾B 版本一" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;zh-Hant&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;幾A幾B｜版本一&lt;/title&gt;
+&lt;style&gt;
+:root{font-family:system-ui,&quot;Microsoft JhengHei&quot;,sans-serif;color:#23443d;background:#f4f2e9;line-height:1.7}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 16px;display:flex;justify-content:center}
+main{width:min(100%,1100px)}
+.eyebrow{margin:0 0 8px;font-size:13px;letter-spacing:.12em;color:#576b5f}
+h1{font-size:clamp(32px,7vw,46px);line-height:1.25;margin:0 0 14px}
+.intro{margin:0 0 24px;color:#50645b}
+.card{padding:clamp(24px,5vw,38px);background:#fff;border:1px solid #d1dcd1;border-radius:26px;box-shadow:0 16px 50px #274b3e0a}
+label{display:block;font-weight:650;margin-bottom:10px}
+input{width:100%;font:700 36px/1.4 system-ui;text-align:center;padding:14px;border:2px solid #a3b9ac;border-radius:14px;color:#23443d;background:#fbfcf8}
+input::placeholder{color:#9ba69e;font-weight:400}
+#guess{letter-spacing:.3em}
+#guess::placeholder{letter-spacing:.1em}
+button{font:inherit;font-weight:650;border-radius:12px;padding:13px 18px;cursor:pointer;min-height:50px}
+.submit{width:100%;margin-top:14px;border:1px solid #315e4f;background:#315e4f;color:white}
+.reset{border:1px solid #a6b9ab;color:#315e4f;background:transparent}
+button:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:3px solid #a86731;outline-offset:4px}
+#feedback{display:flex;align-items:center;justify-content:center;text-align:center;min-height:94px;border-radius:14px;background:#edf2eb;padding:18px;margin:18px 0;color:#355a4b;font-size:20px;font-weight:650}
+#feedback[data-tone=error]{background:#f8e9e1;color:#853b29}
+#feedback[data-tone=win]{background:#dcebd7;color:#28512a}
+.footer{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.note{font-size:13px;color:#5b6b61;margin:22px 4px 0}
+.small{font-size:14px;color:#5b6b61}
+.rules{margin:0 0 16px;padding:12px 16px;border-radius:12px;background:#edf2eb;font-size:14px;color:#476251}
+.debug{display:flex;gap:10px;align-items:center;margin:16px 0 0;font-weight:650;cursor:pointer}
+.debug input{width:22px;height:22px;min-height:0;margin:0;padding:0;font-size:16px;letter-spacing:0}
+.debugbox{margin:10px 0 0;padding:10px 14px;border-radius:12px;background:#fff4d6;color:#6b4a0b;font-weight:700;font-size:20px}
+.debugbox[hidden]{display:none}
+@media(prefers-reduced-motion:no-preference){button{transition:background .15s}.submit:hover:not(:disabled){background:#244d40}}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:start}
+h2{margin:0 0 14px;font-size:22px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 18px;color:#476251}
+details{border:1px solid #d1dcd1;border-radius:14px;margin:12px 0;background:#fbfcf8;overflow:hidden}
+summary{padding:15px;cursor:pointer;font-weight:650}
+.round-content{padding:0 15px 15px}
+.table-wrap{overflow:auto}
+table{border-collapse:collapse;width:100%;font-size:15px;text-align:left}
+caption{text-align:left;padding-bottom:8px;font-size:14px;color:#5b6b61}
+th,td{padding:9px 8px;border-bottom:1px solid #dce5da;white-space:nowrap}
+th{font-weight:650;background:#edf2eb}
+.round-meta{font-size:13px;color:#5b6b61}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}
+.status{padding:14px 18px;border:1px solid #c9d7ce;border-radius:14px;background:#e8f1e8;min-height:56px;margin:18px 0}
+.status[data-tone=error]{background:#f8e9e1;color:#853b29}
+.status[data-tone=busy]{background:#edf0f4;color:#3b5260}
+#code{font-size:24px;text-align:left;letter-spacing:0}
+.gate{max-width:620px;margin:24px auto}
+.tag{padding:6px 12px;border-radius:8px;background:#e7ede4;font-size:14px;display:inline-block}
+.resume{margin:12px 0;font-size:14px}
+.notice{padding:16px;background:#eeeade;border-radius:12px;font-size:14px;color:#5d5447}
+.status-actions{display:flex;gap:10px;flex-wrap:wrap}
+.empty{padding:20px 0;color:#5b6b61}
+main{width:min(100%,580px)}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main&gt;
+  &lt;p class=&quot;eyebrow&quot;&gt;數位科技概論 · 版本一&lt;/p&gt;
+  &lt;h1&gt;幾 A 幾 B&lt;/h1&gt;
+  &lt;p class=&quot;intro&quot;&gt;電腦想好了 4 個不重複的數字。根據 A 與 B 的提示，一步步推理出答案。&lt;/p&gt;
+  &lt;section class=&quot;card&quot; aria-label=&quot;幾 A 幾 B 遊戲&quot;&gt;
+    &lt;p class=&quot;rules&quot;&gt;答案是 4 個「不重複」的數字，可以 0 開頭（例如 0123）。&lt;b&gt;A&lt;/b&gt;＝數字與位置都對；&lt;b&gt;B&lt;/b&gt;＝數字對、位置不同。4A0B 就過關。&lt;/p&gt;
+    &lt;form id=&quot;guess-form&quot; novalidate&gt;
+      &lt;label for=&quot;guess&quot;&gt;你猜的四位數字&lt;/label&gt;
+      &lt;input id=&quot;guess&quot; type=&quot;text&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; autocomplete=&quot;off&quot; placeholder=&quot;例如 0123&quot; aria-describedby=&quot;feedback&quot;&gt;
+      &lt;button class=&quot;submit&quot; id=&quot;submit&quot; type=&quot;submit&quot;&gt;猜看看&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;label class=&quot;debug&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;debug&quot;&gt; 除錯模式（顯示這一局的答案）&lt;/label&gt;
+    &lt;p id=&quot;debug-answer&quot; class=&quot;debugbox&quot; hidden&gt;&lt;/p&gt;
+    &lt;p id=&quot;feedback&quot; role=&quot;status&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;&gt;準備好了！請猜一個四位數字。&lt;/p&gt;
+    &lt;div class=&quot;footer&quot;&gt;&lt;button class=&quot;reset&quot; id=&quot;restart&quot; type=&quot;button&quot;&gt;重新開始&lt;/button&gt;&lt;span class=&quot;small&quot;&gt;也可以按 Enter 送出&lt;/span&gt;&lt;/div&gt;
+  &lt;/section&gt;
+  &lt;p class=&quot;note&quot;&gt;這一版沒有歷史、帳號或存檔。重新開始、重新整理後都會重新抽答案。除錯模式是測試工具：切換它不會換答案、不會增加猜測次數。&lt;/p&gt;
+&lt;/main&gt;
+&lt;script&gt;
+&#x27;use strict&#x27;;
+const $ = id =&gt; document.getElementById(id);
+const form = $(&#x27;guess-form&#x27;), input = $(&#x27;guess&#x27;), submit = $(&#x27;submit&#x27;);
+const feedback = $(&#x27;feedback&#x27;), restart = $(&#x27;restart&#x27;), debugBox = $(&#x27;debug&#x27;), debugAnswer = $(&#x27;debug-answer&#x27;);
+let answer, finished;
+
+function randomAnswer() {
+  const d = &#x27;0123456789&#x27;.split(&#x27;&#x27;);
+  for (let i = d.length - 1; i &gt; 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [d[i], d[j]] = [d[j], d[i]]; }
+  return d.slice(0, 4).join(&#x27;&#x27;);
+}
+function parseGuess(raw) {
+  const t = String(raw).trim();
+  if (!t) return {error: &#x27;請輸入四位數字。&#x27;};
+  if (!/^\d+$/.test(t)) return {error: &#x27;只能輸入數字 0～9。&#x27;};
+  if (t.length !== 4) return {error: &#x27;必須剛好四位數字（可以 0 開頭，例如 0123）。&#x27;};
+  if (new Set(t.split(&#x27;&#x27;)).size !== 4) return {error: &#x27;四個數字不能重複。&#x27;};
+  return {value: t};
+}
+function score(guess, target) {
+  let a = 0, b = 0;
+  for (let i = 0; i &lt; 4; i++) {
+    if (guess[i] === target[i]) a++;
+    else if (target.indexOf(guess[i]) &gt;= 0) b++;
+  }
+  return {a, b};
+}
+
+function showMessage(text, tone = &#x27;&#x27;) { feedback.textContent = text; feedback.dataset.tone = tone; }
+function updateDebug() {
+  debugAnswer.hidden = !debugBox.checked;
+  if (debugBox.checked) debugAnswer.textContent = &#x27;除錯答案：&#x27; + answer;
+}
+function newGame(focusInput = true) {
+  answer = randomAnswer();
+  finished = false;
+  input.value = &#x27;&#x27;; input.disabled = false; submit.disabled = false;
+  input.removeAttribute(&#x27;aria-invalid&#x27;);
+  debugBox.checked = false; updateDebug();
+  showMessage(&#x27;準備好了！請猜一個四位數字。&#x27;);
+  if (focusInput) input.focus();
+}
+form.addEventListener(&#x27;submit&#x27;, event =&gt; {
+  event.preventDefault();
+  if (finished) return;
+  const parsed = parseGuess(input.value);
+  if (parsed.error) {
+    showMessage(parsed.error, &#x27;error&#x27;);
+    input.setAttribute(&#x27;aria-invalid&#x27;, &#x27;true&#x27;); input.focus(); return;
+  }
+  input.removeAttribute(&#x27;aria-invalid&#x27;);
+  const r = score(parsed.value, answer);
+  if (r.a === 4) {
+    finished = true;
+    showMessage(&#x27;猜對了！答案就是 &#x27; + answer + &#x27;（4A0B）。&#x27;, &#x27;win&#x27;);
+    input.disabled = true; submit.disabled = true; restart.focus();
+  } else {
+    showMessage(parsed.value + &#x27;：&#x27; + r.a + &#x27;A&#x27; + r.b + &#x27;B&#x27;);
+    input.focus(); input.select();
+  }
+});
+debugBox.addEventListener(&#x27;change&#x27;, updateDebug);
+restart.addEventListener(&#x27;click&#x27;, () =&gt; newGame());
+newGame(false);
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+  <iframe id="f-v2" title="幾A幾B 版本二" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;zh-Hant&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;幾A幾B｜版本二&lt;/title&gt;
+&lt;style&gt;
+:root{font-family:system-ui,&quot;Microsoft JhengHei&quot;,sans-serif;color:#23443d;background:#f4f2e9;line-height:1.7}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 16px;display:flex;justify-content:center}
+main{width:min(100%,1100px)}
+.eyebrow{margin:0 0 8px;font-size:13px;letter-spacing:.12em;color:#576b5f}
+h1{font-size:clamp(32px,7vw,46px);line-height:1.25;margin:0 0 14px}
+.intro{margin:0 0 24px;color:#50645b}
+.card{padding:clamp(24px,5vw,38px);background:#fff;border:1px solid #d1dcd1;border-radius:26px;box-shadow:0 16px 50px #274b3e0a}
+label{display:block;font-weight:650;margin-bottom:10px}
+input{width:100%;font:700 36px/1.4 system-ui;text-align:center;padding:14px;border:2px solid #a3b9ac;border-radius:14px;color:#23443d;background:#fbfcf8}
+input::placeholder{color:#9ba69e;font-weight:400}
+#guess{letter-spacing:.3em}
+#guess::placeholder{letter-spacing:.1em}
+button{font:inherit;font-weight:650;border-radius:12px;padding:13px 18px;cursor:pointer;min-height:50px}
+.submit{width:100%;margin-top:14px;border:1px solid #315e4f;background:#315e4f;color:white}
+.reset{border:1px solid #a6b9ab;color:#315e4f;background:transparent}
+button:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:3px solid #a86731;outline-offset:4px}
+#feedback{display:flex;align-items:center;justify-content:center;text-align:center;min-height:94px;border-radius:14px;background:#edf2eb;padding:18px;margin:18px 0;color:#355a4b;font-size:20px;font-weight:650}
+#feedback[data-tone=error]{background:#f8e9e1;color:#853b29}
+#feedback[data-tone=win]{background:#dcebd7;color:#28512a}
+.footer{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.note{font-size:13px;color:#5b6b61;margin:22px 4px 0}
+.small{font-size:14px;color:#5b6b61}
+.rules{margin:0 0 16px;padding:12px 16px;border-radius:12px;background:#edf2eb;font-size:14px;color:#476251}
+.debug{display:flex;gap:10px;align-items:center;margin:16px 0 0;font-weight:650;cursor:pointer}
+.debug input{width:22px;height:22px;min-height:0;margin:0;padding:0;font-size:16px;letter-spacing:0}
+.debugbox{margin:10px 0 0;padding:10px 14px;border-radius:12px;background:#fff4d6;color:#6b4a0b;font-weight:700;font-size:20px}
+.debugbox[hidden]{display:none}
+@media(prefers-reduced-motion:no-preference){button{transition:background .15s}.submit:hover:not(:disabled){background:#244d40}}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:start}
+h2{margin:0 0 14px;font-size:22px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 18px;color:#476251}
+details{border:1px solid #d1dcd1;border-radius:14px;margin:12px 0;background:#fbfcf8;overflow:hidden}
+summary{padding:15px;cursor:pointer;font-weight:650}
+.round-content{padding:0 15px 15px}
+.table-wrap{overflow:auto}
+table{border-collapse:collapse;width:100%;font-size:15px;text-align:left}
+caption{text-align:left;padding-bottom:8px;font-size:14px;color:#5b6b61}
+th,td{padding:9px 8px;border-bottom:1px solid #dce5da;white-space:nowrap}
+th{font-weight:650;background:#edf2eb}
+.round-meta{font-size:13px;color:#5b6b61}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}
+.status{padding:14px 18px;border:1px solid #c9d7ce;border-radius:14px;background:#e8f1e8;min-height:56px;margin:18px 0}
+.status[data-tone=error]{background:#f8e9e1;color:#853b29}
+.status[data-tone=busy]{background:#edf0f4;color:#3b5260}
+#code{font-size:24px;text-align:left;letter-spacing:0}
+.gate{max-width:620px;margin:24px auto}
+.tag{padding:6px 12px;border-radius:8px;background:#e7ede4;font-size:14px;display:inline-block}
+.resume{margin:12px 0;font-size:14px}
+.notice{padding:16px;background:#eeeade;border-radius:12px;font-size:14px;color:#5d5447}
+.status-actions{display:flex;gap:10px;flex-wrap:wrap}
+.empty{padding:20px 0;color:#5b6b61}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main&gt;
+  &lt;p class=&quot;eyebrow&quot;&gt;數位科技概論 · 版本二&lt;/p&gt;
+  &lt;h1&gt;幾 A 幾 B&lt;/h1&gt;
+  &lt;p class=&quot;intro&quot;&gt;電腦想好了 4 個不重複的數字。每一局的猜測都會留在右邊的歷史裡。&lt;/p&gt;
+  &lt;div class=&quot;stats&quot;&gt;&lt;span id=&quot;total&quot;&gt;共 1 局&lt;/span&gt;&lt;span id=&quot;wins&quot;&gt;猜對 0 局&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;layout&quot;&gt;
+    &lt;section class=&quot;card&quot; aria-label=&quot;幾 A 幾 B 遊戲&quot;&gt;
+      &lt;h2 id=&quot;round-title&quot;&gt;第 1 局&lt;/h2&gt;
+      &lt;p class=&quot;rules&quot;&gt;答案是 4 個「不重複」的數字，可以 0 開頭（例如 0123）。&lt;b&gt;A&lt;/b&gt;＝數字與位置都對；&lt;b&gt;B&lt;/b&gt;＝數字對、位置不同。4A0B 就過關。&lt;/p&gt;
+      &lt;form id=&quot;guess-form&quot; novalidate&gt;
+        &lt;label for=&quot;guess&quot;&gt;你猜的四位數字&lt;/label&gt;
+        &lt;input id=&quot;guess&quot; type=&quot;text&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; autocomplete=&quot;off&quot; placeholder=&quot;例如 0123&quot; aria-describedby=&quot;feedback&quot;&gt;
+        &lt;button class=&quot;submit&quot; id=&quot;submit&quot; type=&quot;submit&quot;&gt;猜看看&lt;/button&gt;
+      &lt;/form&gt;
+      &lt;label class=&quot;debug&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;debug&quot;&gt; 除錯模式（顯示這一局的答案）&lt;/label&gt;
+      &lt;p id=&quot;debug-answer&quot; class=&quot;debugbox&quot; hidden&gt;&lt;/p&gt;
+      &lt;p id=&quot;feedback&quot; role=&quot;status&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;&gt;準備好了！請猜一個四位數字。&lt;/p&gt;
+      &lt;div class=&quot;footer&quot;&gt;&lt;button class=&quot;reset&quot; id=&quot;restart&quot; type=&quot;button&quot;&gt;開新局（保留紀錄）&lt;/button&gt;&lt;span class=&quot;small&quot;&gt;也可以按 Enter 送出&lt;/span&gt;&lt;/div&gt;
+    &lt;/section&gt;
+    &lt;section class=&quot;card&quot; aria-labelledby=&quot;history-title&quot;&gt;
+      &lt;h2 id=&quot;history-title&quot;&gt;遊玩歷史&lt;/h2&gt;
+      &lt;p class=&quot;small&quot;&gt;每一局各自保留猜測次序、結果與時間。點選標題可以展開或收合。&lt;/p&gt;
+      &lt;div id=&quot;history&quot;&gt;&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+  &lt;p class=&quot;note&quot;&gt;沒有帳號或存檔，紀錄只留在目前頁面，重新整理或關閉後會清空。未猜對就開新局，舊局會標示「未完成」，只能查看、不能續玩。&lt;/p&gt;
+&lt;/main&gt;
+&lt;script&gt;
+&#x27;use strict&#x27;;
+const $ = id =&gt; document.getElementById(id);
+const form = $(&#x27;guess-form&#x27;), input = $(&#x27;guess&#x27;), submit = $(&#x27;submit&#x27;);
+const feedback = $(&#x27;feedback&#x27;), restart = $(&#x27;restart&#x27;), debugBox = $(&#x27;debug&#x27;), debugAnswer = $(&#x27;debug-answer&#x27;);
+const rounds = [];
+let current = null;
+
+function randomAnswer() {
+  const d = &#x27;0123456789&#x27;.split(&#x27;&#x27;);
+  for (let i = d.length - 1; i &gt; 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [d[i], d[j]] = [d[j], d[i]]; }
+  return d.slice(0, 4).join(&#x27;&#x27;);
+}
+function parseGuess(raw) {
+  const t = String(raw).trim();
+  if (!t) return {error: &#x27;請輸入四位數字。&#x27;};
+  if (!/^\d+$/.test(t)) return {error: &#x27;只能輸入數字 0～9。&#x27;};
+  if (t.length !== 4) return {error: &#x27;必須剛好四位數字（可以 0 開頭，例如 0123）。&#x27;};
+  if (new Set(t.split(&#x27;&#x27;)).size !== 4) return {error: &#x27;四個數字不能重複。&#x27;};
+  return {value: t};
+}
+function score(guess, target) {
+  let a = 0, b = 0;
+  for (let i = 0; i &lt; 4; i++) {
+    if (guess[i] === target[i]) a++;
+    else if (target.indexOf(guess[i]) &gt;= 0) b++;
+  }
+  return {a, b};
+}
+
+function statusLabel(s) { return {playing: &#x27;進行中&#x27;, won: &#x27;已猜對&#x27;, unfinished: &#x27;未完成&#x27;}[s]; }
+function showMessage(text, tone = &#x27;&#x27;) { feedback.textContent = text; feedback.dataset.tone = tone; }
+function make(tag, text, className) {
+  const el = document.createElement(tag);
+  if (text !== undefined) el.textContent = text;
+  if (className) el.className = className;
+  return el;
+}
+function timeLabel(iso) { return new Date(iso).toLocaleString(&#x27;zh-TW&#x27;, {hour12: false}); }
+function updateDebug() {
+  debugAnswer.hidden = !debugBox.checked;
+  if (debugBox.checked) debugAnswer.textContent = &#x27;除錯答案：&#x27; + current.answer;
+}
+function renderHistory(openId = null) {
+  const expanded = new Set([...$(&#x27;history&#x27;).querySelectorAll(&#x27;details[open]&#x27;)].map(el =&gt; el.dataset.round));
+  $(&#x27;history&#x27;).replaceChildren();
+  $(&#x27;total&#x27;).textContent = &#x27;共 &#x27; + rounds.length + &#x27; 局&#x27;;
+  $(&#x27;wins&#x27;).textContent = &#x27;猜對 &#x27; + rounds.filter(r =&gt; r.status === &#x27;won&#x27;).length + &#x27; 局&#x27;;
+  [...rounds].reverse().forEach(round =&gt; {
+    const details = make(&#x27;details&#x27;); details.dataset.round = String(round.id);
+    details.open = round.id === openId || expanded.has(String(round.id));
+    details.append(make(&#x27;summary&#x27;, &#x27;第 &#x27; + round.id + &#x27; 局 · &#x27; + statusLabel(round.status) + &#x27; · &#x27; + round.guesses.length + &#x27; 次猜測&#x27;));
+    const content = make(&#x27;div&#x27;, undefined, &#x27;round-content&#x27;);
+    content.append(make(&#x27;p&#x27;, &#x27;開始：&#x27; + timeLabel(round.startedAt), &#x27;round-meta&#x27;));
+    if (round.endedAt) content.append(make(&#x27;p&#x27;, &#x27;結束：&#x27; + timeLabel(round.endedAt), &#x27;round-meta&#x27;));
+    if (round.status === &#x27;won&#x27;) content.append(make(&#x27;p&#x27;, &#x27;答案：&#x27; + round.answer));
+    if (!round.guesses.length) content.append(make(&#x27;p&#x27;, &#x27;這一局尚未猜測。&#x27;, &#x27;small&#x27;));
+    else {
+      const wrap = make(&#x27;div&#x27;, undefined, &#x27;table-wrap&#x27;), table = make(&#x27;table&#x27;);
+      table.append(make(&#x27;caption&#x27;, &#x27;第 &#x27; + round.id + &#x27; 局的完整猜測歷程&#x27;));
+      const head = make(&#x27;thead&#x27;), header = make(&#x27;tr&#x27;);
+      [&#x27;次序&#x27;, &#x27;猜測&#x27;, &#x27;結果&#x27;, &#x27;時間&#x27;].forEach(l =&gt; { const th = make(&#x27;th&#x27;, l); th.scope = &#x27;col&#x27;; header.append(th); });
+      head.append(header); table.append(head);
+      const body = make(&#x27;tbody&#x27;);
+      round.guesses.forEach(g =&gt; {
+        const row = make(&#x27;tr&#x27;);
+        [g.order, g.value, g.a + &#x27;A&#x27; + g.b + &#x27;B&#x27;, new Date(g.at).toLocaleTimeString(&#x27;zh-TW&#x27;, {hour12: false})].forEach(v =&gt; row.append(make(&#x27;td&#x27;, String(v))));
+        body.append(row);
+      });
+      table.append(body); wrap.append(table); content.append(wrap);
+    }
+    details.append(content); $(&#x27;history&#x27;).append(details);
+  });
+}
+function newGame(focusInput = true) {
+  const now = new Date().toISOString();
+  if (current &amp;&amp; current.status === &#x27;playing&#x27;) { current.status = &#x27;unfinished&#x27;; current.endedAt = now; }
+  current = {id: rounds.length + 1, answer: randomAnswer(), status: &#x27;playing&#x27;, startedAt: now, endedAt: null, guesses: []};
+  rounds.push(current);
+  $(&#x27;round-title&#x27;).textContent = &#x27;第 &#x27; + current.id + &#x27; 局&#x27;;
+  input.value = &#x27;&#x27;; input.disabled = false; submit.disabled = false;
+  input.removeAttribute(&#x27;aria-invalid&#x27;);
+  debugBox.checked = false; updateDebug();
+  showMessage(&#x27;準備好了！請猜一個四位數字。&#x27;);
+  renderHistory(current.id);
+  if (focusInput) input.focus();
+}
+form.addEventListener(&#x27;submit&#x27;, event =&gt; {
+  event.preventDefault();
+  if (!current || current.status !== &#x27;playing&#x27;) return;
+  const parsed = parseGuess(input.value);
+  if (parsed.error) {
+    showMessage(parsed.error + &#x27;這次不列入猜測紀錄。&#x27;, &#x27;error&#x27;);
+    input.setAttribute(&#x27;aria-invalid&#x27;, &#x27;true&#x27;); input.focus(); return;
+  }
+  input.removeAttribute(&#x27;aria-invalid&#x27;);
+  const r = score(parsed.value, current.answer), now = new Date().toISOString();
+  current.guesses.push({order: current.guesses.length + 1, value: parsed.value, a: r.a, b: r.b, at: now});
+  if (r.a === 4) {
+    current.status = &#x27;won&#x27;; current.endedAt = now;
+    showMessage(&#x27;猜對了！答案就是 &#x27; + current.answer + &#x27;，共猜了 &#x27; + current.guesses.length + &#x27; 次。&#x27;, &#x27;win&#x27;);
+    input.disabled = true; submit.disabled = true; restart.focus();
+  } else {
+    showMessage(parsed.value + &#x27;：&#x27; + r.a + &#x27;A&#x27; + r.b + &#x27;B&#x27;);
+    input.focus(); input.select();
+  }
+  renderHistory(current.id);
+});
+debugBox.addEventListener(&#x27;change&#x27;, updateDebug);
+restart.addEventListener(&#x27;click&#x27;, () =&gt; newGame());
+newGame(false);
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" hidden></iframe>
+  <section id="cloud" class="cloud" hidden>
+    <h2 id="cloud-title"></h2>
+    <p id="cloud-desc"></p>
+    <p class="warn">GitHub Pages 只能放靜態網頁；雲端存檔要靠 Google Apps Script。部署方式見 README，部署後把 <code>/exec</code> 網址貼在下面（只存在你自己的瀏覽器）。</p>
+    <label for="exec-url">/exec 網址</label>
+    <input id="exec-url" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+    <a id="direct-link" class="go" href="#" target="_blank" rel="noopener noreferrer">開啟雲端版 ↗</a>
+    <button id="open-exec" type="button">儲存網址並開啟</button>
+  </section>
+</div>
+<script>
+'use strict';
+(function () {
+  // 部署好 GAS 後，可把 /exec 網址填在這裡，GitHub 上的訪客就能直接點開：
+  var DEFAULT_URLS = {v3: 'https://script.google.com/macros/s/AKfycbwkm1ieookKN2skijQOBblQ41yS6bp9pNyLGokCGX6hPXJM_HeArXipO9rRq2tNlYAH/exec', v4: 'https://script.google.com/macros/s/AKfycbyEySWEZT7Di9grXMGobUdTFbl-1YP8bM-vXA2JoGFkXfUfcXSGTHNMWuLVQqu9EWdG1Q/exec'};
+  var info = {
+    v3: ['版本三：代號雲端存檔', '輸入代號，每次有效猜測自動存進製作者的 Google 試算表；同代號可讀回與續玩。部署時執行身分選「我」。'],
+    v4: ['版本四：Google 個人存檔', '每位玩家用自己的 Google 帳號授權，確認後建立自己的試算表。部署時執行身分選「存取網頁應用程式的使用者」，不用 setup。']
+  };
+  var frames = {v1: document.getElementById('f-v1'), v2: document.getElementById('f-v2')};
+  var tabs = document.querySelectorAll('nav button'), input = document.getElementById('exec-url');
+  var active = 'v1';
+  function store(key, val) { try { if (val === undefined) return localStorage.getItem(key) || ''; localStorage.setItem(key, val); } catch (e) { return ''; } return ''; }
+  function fit(f) { try { var h = f.contentDocument.documentElement.scrollHeight; if (h > 0) f.style.height = (h + 4) + 'px'; } catch (e) {} }
+  function show(id) {
+    if (!frames[id] && !info[id]) id = 'v1';
+    active = id;
+    Object.keys(frames).forEach(function (k) { frames[k].hidden = k !== id; });
+    tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.v === id)); });
+    var cloud = !!info[id];
+    document.getElementById('cloud').hidden = !cloud;
+    if (cloud) {
+      document.getElementById('cloud-title').textContent = info[id][0];
+      document.getElementById('cloud-desc').textContent = info[id][1];
+      input.value = DEFAULT_URLS[id] || store('exec-' + id);
+      document.getElementById('direct-link').href = input.value || '#';
+    }
+    if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+    if (frames[id]) fit(frames[id]);
+  }
+  tabs.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.v); }); });
+  setInterval(function () { if (frames[active]) fit(frames[active]); }, 300);
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
+  document.getElementById('open-exec').addEventListener('click', function () {
+    var url = input.value.trim();
+    if (/^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(url)) { store('exec-' + active, url); window.open(url, '_blank', 'noopener'); }
+    else alert('請貼上以 https://script.google.com/macros/s/ 開頭、以 /exec 結尾的網址。');
+  });
+  input.addEventListener('input', function () { document.getElementById('direct-link').href = input.value.trim() || '#'; });
+  show(location.hash.slice(1) || 'v1');
+})();
+</script>
+</body>
+</html>
